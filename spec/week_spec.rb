@@ -9,25 +9,15 @@ RSpec.describe Week do
 
   describe "to_a" do
     it "returns an Array containing seven Day instances" do
-      expect(subject.to_a[0]).to be_a Day
-      expect(subject.to_a[1]).to be_a Day
-      expect(subject.to_a[2]).to be_a Day
-      expect(subject.to_a[3]).to be_a Day
-      expect(subject.to_a[4]).to be_a Day
-      expect(subject.to_a[5]).to be_a Day
-      expect(subject.to_a[6]).to be_a Day
+      expect(subject.to_a.size).to eq 7
+      expect(subject.to_a.all?(Day)).to eq true
     end
   end
 
   describe "to_s" do
     it "returns an Array containing seven String instances" do
-      expect(subject.to_s[0]).to be_a String
-      expect(subject.to_s[1]).to be_a String
-      expect(subject.to_s[2]).to be_a String
-      expect(subject.to_s[3]).to be_a String
-      expect(subject.to_s[4]).to be_a String
-      expect(subject.to_s[5]).to be_a String
-      expect(subject.to_s[6]).to be_a String
+      expect(subject.to_s.size).to eq 7
+      expect(subject.to_s.all?(String)).to eq true
     end
 
     it "starts with the given date" do
