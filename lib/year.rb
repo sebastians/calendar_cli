@@ -10,20 +10,9 @@ class Year
   end
 
   def months
-    [
-      Month.new(date: Date.new(date_year, 1, 15)),
-      Month.new(date: Date.new(date_year, 2, 15)),
-      Month.new(date: Date.new(date_year, 3, 15)),
-      Month.new(date: Date.new(date_year, 4, 15)),
-      Month.new(date: Date.new(date_year, 5, 15)),
-      Month.new(date: Date.new(date_year, 6, 15)),
-      Month.new(date: Date.new(date_year, 7, 15)),
-      Month.new(date: Date.new(date_year, 8, 15)),
-      Month.new(date: Date.new(date_year, 9, 15)),
-      Month.new(date: Date.new(date_year, 10, 15)),
-      Month.new(date: Date.new(date_year, 11, 15)),
-      Month.new(date: Date.new(date_year, 12, 15))
-    ]
+    (1..12).map do |month_number|
+      Month.new(date: Date.new(date_year, month_number, 15))
+    end
   end
 
   private

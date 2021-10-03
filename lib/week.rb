@@ -15,15 +15,9 @@ class Week
   attr_reader :date, :calendar_month
 
   def days_of_week
-    [
-      Day.new(date: first_day_of_week, calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(1), calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(2), calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(3), calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(4), calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(5), calendar_month: calendar_month),
-      Day.new(date: first_day_of_week.next_day(6), calendar_month: calendar_month)
-    ]
+    (0..6).map do |days_from_beginning_of_week|
+      Day.new(date: first_day_of_week.next_day(days_from_beginning_of_week), calendar_month: calendar_month)
+    end
   end
 
   def first_day_of_week
