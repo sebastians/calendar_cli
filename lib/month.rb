@@ -5,8 +5,8 @@ class Month
     @date = date
   end
 
-  def header
-    date.strftime("%B %Y")
+  def name
+    date.strftime("%B")
   end
 
   def days_of_the_week

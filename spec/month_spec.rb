@@ -6,9 +6,9 @@ RSpec.describe Month do
 
   subject { described_class.new(date: date) }
 
-  describe "#header" do
-    it "returns the name of the month followed by the year" do
-      expect(subject.header).to eq "December 2021"
+  describe "#name" do
+    it "returns the name of the month" do
+      expect(subject.name).to eq "December"
     end
   end
 
