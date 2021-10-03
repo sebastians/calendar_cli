@@ -5,6 +5,22 @@ class Month
     @date = date
   end
 
+  def header
+    date.strftime("%B %Y")
+  end
+
+  def days_of_the_week
+    %w(Su Mo Tu We Th Fr Sa)
+  end
+
+  def days_per_week
+    weeks.map(&:to_s)
+  end
+
+  private
+
+  attr_reader :date
+
   def weeks
     [
       Week.new(date: date, calendar_month: date_month),
@@ -14,10 +30,6 @@ class Month
       Week.new(date: date.next_day(28), calendar_month: date_month)
     ]
   end
-
-  private
-
-  attr_reader :date
 
   def date_month
     date.month

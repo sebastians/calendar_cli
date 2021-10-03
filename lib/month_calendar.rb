@@ -5,14 +5,6 @@ class MonthCalendar
     @date = date
   end
 
-  def header
-    date.strftime("%B %Y")
-  end
-
-  def days_of_the_week
-    %w(Su Mo Tu We Th Fr Sa)
-  end
-
   def days_of_the_month
     weeks.map(&:to_s)
   end
