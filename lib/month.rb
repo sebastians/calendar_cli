@@ -14,7 +14,7 @@ class Month
   end
 
   def days_per_week
-    weeks.map(&:to_s)
+    weeks.map(&:to_a)
   end
 
   private

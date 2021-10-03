@@ -7,6 +7,14 @@ class Week
   end
 
   def to_a
+    days_of_week.map(&:to_s)
+  end
+
+  private
+
+  attr_reader :date, :calendar_month
+
+  def days_of_week
     [
       Day.new(date: first_day_of_week, calendar_month: calendar_month),
       Day.new(date: first_day_of_week.next_day(1), calendar_month: calendar_month),
@@ -17,14 +25,6 @@ class Week
       Day.new(date: first_day_of_week.next_day(6), calendar_month: calendar_month)
     ]
   end
-
-  def to_s
-    to_a.map(&:to_s)
-  end
-
-  private
-
-  attr_reader :date, :calendar_month
 
   def first_day_of_week
     @first_day_of_week ||= find_first_day_of_week
