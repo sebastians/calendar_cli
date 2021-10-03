@@ -7,7 +7,7 @@ class Week
   end
 
   def to_a
-    days_of_week.map(&:to_s)
+    days_of_week.map(&:to_i)
   end
 
   private
@@ -16,7 +16,8 @@ class Week
 
   def days_of_week
     (0..6).map do |days_from_beginning_of_week|
-      Day.new(date: first_day_of_week.next_day(days_from_beginning_of_week), calendar_month: calendar_month)
+      day_of_week = first_day_of_week.next_day(days_from_beginning_of_week)
+      Day.new(date: day_of_week, calendar_month: calendar_month)
     end
   end
 

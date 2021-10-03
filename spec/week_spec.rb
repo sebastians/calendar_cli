@@ -13,22 +13,22 @@ RSpec.describe Week do
     end
 
     it "starts with the given date" do
-      expect(subject.to_a.first).to eq "5"
+      expect(subject.to_a.first).to eq 5
     end
 
     it "ends with a date 6 days later" do
-      expect(subject.to_a.last).to eq "11"
+      expect(subject.to_a.last).to eq 11
     end
 
     context "when the given date is not a Sunday" do
       let(:date) { Date.parse("2021-12-03") }
 
       it "starts with the previous Sunday" do
-        expect(subject.to_a.first).to eq ""
+        expect(subject.to_a.first).to be_nil
       end
 
       it "ends with a date 6 days later" do
-        expect(subject.to_a.last.to_s).to eq "4"
+        expect(subject.to_a.last).to eq 4
       end
     end
   end
