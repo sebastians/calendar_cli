@@ -6,12 +6,12 @@ RSpec.describe Day do
 
   subject { described_class.new(date: date, calendar_month: month) }
 
-  describe "#to_s" do
+  describe "#to_i" do
     context "when the day is not part of the given month" do
       let(:month) { 1 }
 
       it "is nil" do
-        expect(subject.to_s).to eq ""
+        expect(subject.to_i).to eq nil
       end
     end
 
@@ -19,7 +19,7 @@ RSpec.describe Day do
       let(:month) { 12 }
 
       it "returns an Integer with the number of the day of the month" do
-        expect(subject.to_s).to eq "3"
+        expect(subject.to_i).to eq 3
       end
     end
   end

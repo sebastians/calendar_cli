@@ -6,8 +6,8 @@ class Day
     @calendar_month = calendar_month
   end
 
-  def to_s
-    date_in_calendar_month? ? day : ""
+  def to_i
+    date.day if date_in_calendar_month?
   end
 
   private
@@ -16,9 +16,5 @@ class Day
 
   def date_in_calendar_month?
     date.month == calendar_month
-  end
-
-  def day
-    date.strftime("%-d")
   end
 end
