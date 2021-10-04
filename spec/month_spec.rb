@@ -21,12 +21,12 @@ RSpec.describe Month do
   describe "#days_per_week" do
     it "returns an Array containing the days for each week of the month" do
       expect(subject.days_per_week).to eq [
-        ["", "", "", "", "", "1", "2"],
-        ["3", "4", "5", "6", "7", "8", "9"],
-        ["10", "11", "12", "13", "14", "15", "16"],
-        ["17", "18", "19", "20", "21", "22", "23"],
-        ["24", "25", "26", "27", "28", "29", "30"],
-        ["31", "", "", "", "", "", ""]
+        [nil, nil, nil, nil, nil, 1, 2],
+        [3, 4, 5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14, 15, 16],
+        [17, 18, 19, 20, 21, 22, 23],
+        [24, 25, 26, 27, 28, 29, 30],
+        [31, nil, nil, nil, nil, nil, nil]
       ]
     end
 
@@ -37,6 +37,29 @@ RSpec.describe Month do
     it "returns a collection containing an element for each day of the month" do
       days_in_month = subject.days_per_week.map(&:to_a).flatten.reject! { |day| day.to_s.empty? }
       expect(days_in_month.size).to eq 31
+    end
+
+    context "when the month has a different number of days" do
+      let(:date) { Date.parse("2021-02-03") }
+
+      it "returns an Array containing the days for each week of the month" do
+        expect(subject.days_per_week).to eq [
+          [nil, 1, 2, 3, 4, 5, 6],
+          [7, 8, 9, 10, 11, 12, 13],
+          [14, 15, 16, 17, 18, 19, 20],
+          [21, 22, 23, 24, 25, 26, 27],
+          [28, nil, nil, nil, nil, nil, nil]
+        ]
+      end
+
+      it "returns a collection containing an Array for each week" do
+        expect(subject.days_per_week.size).to eq 5
+      end
+
+      it "returns a collection containing an element for each day of the month" do
+        days_in_month = subject.days_per_week.map(&:to_a).flatten.reject! { |day| day.to_s.empty? }
+        expect(days_in_month.size).to eq 28
+      end
     end
   end
 end
