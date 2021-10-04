@@ -7,7 +7,11 @@ class Week
   end
 
   def to_a
-    days_of_week.map(&:to_i)
+    @to_a ||= days_of_week.map(&:to_i)
+  end
+
+  def empty?
+    to_a.all?(nil)
   end
 
   private

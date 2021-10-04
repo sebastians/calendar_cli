@@ -32,4 +32,24 @@ RSpec.describe Week do
       end
     end
   end
+
+  describe "#empty?" do
+    let(:date) { Date.parse("2021-10-03") }
+
+    context "when the week belongs to the given month" do
+      let(:month) { 10 }
+
+      it "is not empty" do
+        expect(subject).not_to be_empty
+      end
+    end
+
+    context "when the week does not belong to the given month" do
+      let(:month) { 11 }
+
+      it "is empty" do
+        expect(subject).to be_empty
+      end
+    end
+  end
 end
