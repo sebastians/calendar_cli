@@ -1,12 +1,17 @@
 require "week"
 
 class Month
-  def initialize(date:)
+  def initialize(date:, year_in_name: false)
     @date = date
+    @year_in_name = year_in_name
   end
 
   def name
-    date.strftime("%B")
+    if year_in_name
+      date.strftime("%B %Y")
+    else
+      date.strftime("%B")
+    end
   end
 
   def days_of_the_week
@@ -19,7 +24,7 @@ class Month
 
   private
 
-  attr_reader :date
+  attr_reader :date, :year_in_name
 
   def weeks
     [
